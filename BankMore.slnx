@@ -1,11 +1,16 @@
 <Solution>
-  <Folder Name="/Solution Items/">
-    <File Path=".gitignore" />
-  </Folder>
-  <Folder Name="/src/">
+  <Folder Name="/ContaCorrente/" />
+  <Folder Name="/ContaCorrente/src/">
     <Project Path="src/ContaCorrente/BankMore.ContaCorrente.API/BankMore.ContaCorrente.API.csproj" />
     <Project Path="src/ContaCorrente/BankMore.ContaCorrente.Application/BankMore.ContaCorrente.Application.csproj" />
     <Project Path="src/ContaCorrente/BankMore.ContaCorrente.Domain/BankMore.ContaCorrente.Domain.csproj" />
     <Project Path="src/ContaCorrente/BankMore.ContaCorrente.Infrastructure/BankMore.ContaCorrente.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/ContaCorrente/tests/">
+    <Project Path="tests/BankMore.ContaCorrente.IntegrationTests/BankMore.ContaCorrente.IntegrationTests.csproj" />
+    <Project Path="tests/BankMore.ContaCorrente.UnitTests/BankMore.ContaCorrente.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
   </Folder>
 </Solution>
