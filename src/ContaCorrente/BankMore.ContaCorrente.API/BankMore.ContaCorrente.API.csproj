@@ -1,20 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.25" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.25" />
+		<PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.4" />
+		<!-- Updated to match Swashbuckle dependency to avoid NU1605 downgrade -->
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BankMore.ContaCorrente.Application\BankMore.ContaCorrente.Application.csproj" />
-    <ProjectReference Include="..\BankMore.ContaCorrente.Domain\BankMore.ContaCorrente.Domain.csproj" />
-    <ProjectReference Include="..\BankMore.ContaCorrente.Infrastructure\BankMore.ContaCorrente.Infrastructure.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\BankMore.ContaCorrente.Application\BankMore.ContaCorrente.Application.csproj" />
+		<ProjectReference Include="..\BankMore.ContaCorrente.Domain\BankMore.ContaCorrente.Domain.csproj" />
+		<ProjectReference Include="..\BankMore.ContaCorrente.Infrastructure\BankMore.ContaCorrente.Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>

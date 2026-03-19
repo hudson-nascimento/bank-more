@@ -56,7 +56,7 @@ namespace BankMore.ContaCorrente.Domain.Entities
         {
             if (valor <= 0)
                 throw new DomainException(
-                    "O valor da movimentação deve ser positivo.",
+                    "O valor da movimentação deve ser positivo e maior que zero.",
                     TipoErro.ValorInvalido);
         }
     }

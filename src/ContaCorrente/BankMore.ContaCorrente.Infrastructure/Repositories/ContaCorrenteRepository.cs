@@ -18,17 +18,17 @@ namespace BankMore.ContaCorrente.Infrastructure.Repositories
             // Retornamos o último Id inserido como NumeroConta
             var sql = @"
             INSERT INTO CONTACORRENTE
-                (NumeroConta, CpfHash, CpfBusca, SenhaHash, Ativo, DataCriacao)
+                (NumeroConta, CpfHash, Cpf, SenhaHash, Ativo, DataCriacao)
             VALUES
                 ((SELECT COALESCE(MAX(NumeroConta), 0) + 1 FROM CONTACORRENTE),
-                 @CpfHash, @CpfBusca, @SenhaHash, 1, @DataCriacao);
+                 @CpfHash, @Cpf, @SenhaHash, 1, @DataCriacao);
 
             SELECT NumeroConta FROM CONTACORRENTE WHERE Id = last_insert_rowid();";
 
             var numeroConta = await connection.ExecuteScalarAsync<int>(sql, new
             {
                 conta.CpfHash,
-                CpfBusca = GerarHashBusca(conta.CpfHash), // SHA-256 do CPF original
+                Cpf = GerarHashBusca(conta.CpfHash), // SHA-256 do CPF original
                 conta.SenhaHash,
                 DataCriacao = conta.DataCriacao.ToString("O")
             });
@@ -53,7 +53,7 @@ namespace BankMore.ContaCorrente.Infrastructure.Repositories
         public async Task<Domain.Entities.ContaCorrente?> ObterPorCpfHashAsync(string cpf)
         {
             // Gerar o hash determinístico (SHA-256) do CPF para busca
-            var cpfBusca = GerarHashBusca(cpf);
+            var Cpf = GerarHashBusca(cpf);
 
             using var connection = _factory.CreateConnection();
 
@@ -61,10 +61,10 @@ namespace BankMore.ContaCorrente.Infrastructure.Repositories
             SELECT Id, NumeroConta, CpfHash, SenhaHash,
                    Ativo, DataCriacao
             FROM CONTACORRENTE
-            WHERE CpfBusca = @CpfBusca";
+            WHERE Cpf = @Cpf";
 
             return await connection.QueryFirstOrDefaultAsync<Domain.Entities.ContaCorrente>(
-                sql, new { CpfBusca = cpfBusca });
+                sql, new { Cpf = Cpf });
         }
 
         public async Task InativarAsync(int numeroConta)

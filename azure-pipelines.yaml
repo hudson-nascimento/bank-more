@@ -1,0 +1,55 @@
+name: "Bank-More - Instrumentação automática"
+parameters:
+- name: etiqueta
+  displayName: Etiqueta/rótulo da imagem
+  type: string
+  default: 'BuildId'
+ 
+resources:
+  repositories:
+    - repository: DevOpsPipelines
+      type: git
+      name: Comunidade/DevOpsPipelines
+ 
+trigger:
+  - main 
+  
+variables:
+  - group: devops-templates-pipeline
+  - name: poolVmImage
+    value: ubuntu-latest
+  - name: imagesRoot
+    value: bank-more/api
+  - name: tag
+    ${{ if eq(parameters.etiqueta, 'BuildId') }}:
+      value: $(Build.BuildId)
+    ${{ else }}:
+      value: ${{ parameters.etiqueta }}
+  - name: acrName
+    value: stixregistry
+  - name: isNotPR
+    value: $[ ne(variables['Build.Reason'], 'PullRequest') 
+
+stages:
+  - stage: ci
+    displayName: Build and Tests
+    jobs:
+      - template: v1/build/dotnet-build.yml@DevOpsPipelines
+        parameters:
+          dockerCommand: docker compose -f $(Build.SourcesDirectory)/bank-more/SolutionItems/docker-compose.yaml --profile testing up -d
+          version: "8.x"
+          workingDirectory: "bank-more"
+
+  - stage: push_docker_images
+    displayName: Build and Push Docker Images to Registry
+    condition: and(succeeded(), eq(variables.isNotPR, true))
+    jobs:
+      - job: build_image_web_api
+        displayName: Build and Push Web Api Docker Image
+        steps:
+          - template: v2/build/docker.yml@DevOpsPipelines
+            parameters:
+              dockerRepository: $(imagesRoot)
+              dockerfile: $(Build.SourcesDirectory)/src/Api/Containerfile
+              tag: $(tag)
+              skipSecurityScan: true 

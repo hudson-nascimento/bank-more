@@ -1,0 +1,6 @@
+services:
+  bankmore.contacorrente.api:
+    image: ${DOCKER_REGISTRY-}bankmorecontacorrenteapi
+    build:
+      context: .
+      dockerfile: src/ContaCorrente/BankMore.ContaCorrente.API/Dockerfile

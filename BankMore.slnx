@@ -1,16 +1,32 @@
 <Solution>
-  <Folder Name="/ContaCorrente/" />
-  <Folder Name="/ContaCorrente/src/">
-    <Project Path="src/ContaCorrente/BankMore.ContaCorrente.API/BankMore.ContaCorrente.API.csproj" />
-    <Project Path="src/ContaCorrente/BankMore.ContaCorrente.Application/BankMore.ContaCorrente.Application.csproj" />
-    <Project Path="src/ContaCorrente/BankMore.ContaCorrente.Domain/BankMore.ContaCorrente.Domain.csproj" />
-    <Project Path="src/ContaCorrente/BankMore.ContaCorrente.Infrastructure/BankMore.ContaCorrente.Infrastructure.csproj" />
+  <Folder Name="/pipelines/">
+    <File Path="azure-pipelines.yaml" />
   </Folder>
-  <Folder Name="/ContaCorrente/tests/">
-    <Project Path="tests/BankMore.ContaCorrente.IntegrationTests/BankMore.ContaCorrente.IntegrationTests.csproj" />
-    <Project Path="tests/BankMore.ContaCorrente.UnitTests/BankMore.ContaCorrente.UnitTests.csproj" />
-  </Folder>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/SolutionItems/">
     <File Path=".gitignore" />
+    <File Path="docker-compose.yaml" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/ContaCorrente/">
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/ContaCorrente/BankMore.ContaCorrente.API/BankMore.ContaCorrente.API.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/ContaCorrente/BankMore.ContaCorrente.Application/BankMore.ContaCorrente.Application.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/ContaCorrente/BankMore.ContaCorrente.Domain/BankMore.ContaCorrente.Domain.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/ContaCorrente/BankMore.ContaCorrente.Infrastructure/BankMore.ContaCorrente.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Transferencia/">
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/Transferencia/BankMore.Transferencia.API/BankMore.Transferencia.API.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/Transferencia/BankMore.Transferencia.Application/BankMore.Transferencia.Application.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/Transferencia/BankMore.Transferencia.Domain/BankMore.Transferencia.Domain.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/src/Transferencia/BankMore.Transferencia.Infrastructure/BankMore.Transferencia.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/ContaCorrente/">
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/tests/BankMore.ContaCorrente.IntegrationTests/BankMore.ContaCorrente.IntegrationTests.csproj" />
+    <Project Path="D:/Projeto/Empresa/AmCom/Teste Técnico/Teste-Desenvolvedor-CSharp-API-v4/BankMore/tests/BankMore.ContaCorrente.UnitTests/BankMore.ContaCorrente.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/tests/Transferencia/">
+    <Project Path="tests/BankMore.Transferencia.IntegrationTests/BankMore.Transferencia.IntegrationTests.csproj" />
+    <Project Path="tests/BankMore.Transferencia.UnitTests/BankMore.Transferencia.UnitTests.csproj" />
   </Folder>
 </Solution>

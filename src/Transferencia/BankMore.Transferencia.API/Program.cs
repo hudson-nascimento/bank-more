@@ -1,3 +1,4 @@
+using BankMore.Transferencia.API.Middlewares;
 using BankMore.Transferencia.Application.Services.Interfaces;
 using BankMore.Transferencia.Domain.Interfaces;
 using BankMore.Transferencia.Infrastructure.Data;
@@ -35,6 +36,9 @@ builder.Services.AddSingleton<DatabaseInitializer>();
 // Repositórios
 builder.Services.AddScoped<ITransferenciaRepository,
                             TransferenciaRepository>();
+// Domain / Application services
+// Register implementation for IContaCorrenteService required by EfetuarTransferenciaHandler
+builder.Services.AddScoped<IContaCorrenteService, ContaCorrenteService>();
 
 // JWT Service 
 var secretKey = builder.Configuration["Jwt:SecretKey"]!;
@@ -75,7 +79,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "BankMore - Transferencia API",
         Version = "v1",
-        Description = "API de gerenciamento de conta corrente do BankMore"
+        Description = "API de gerenciamento de transferência entre contas correntes do BankMore"
     });
 
     // Habilitar comentários XML(documentação dos endpoints)
@@ -116,7 +120,7 @@ var app = builder.Build();
 app.Services.GetRequiredService<DatabaseInitializer>().Initialize();
 
 // Middleware de erros — deve ser o PRIMEIRO da pipeline
-//app.UseMiddleware<ErrorHandlingMiddleware>();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();

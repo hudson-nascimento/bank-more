@@ -8,5 +8,6 @@
         public const string TipoInvalido = "INVALID_TYPE";
         public const string DocumentoInvalido = "INVALID_DOCUMENT";
         public const string NaoAutorizado = "USER_UNAUTHORIZED";
+        public const string FalhaMovimentacao = "";
     }
 }
